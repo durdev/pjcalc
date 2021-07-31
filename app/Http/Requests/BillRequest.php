@@ -25,10 +25,12 @@ class BillRequest extends FormRequest
      */
     public function rules()
     {
+        $recurrences = array_keys(Bill::getRecurrences());
+        
         return [
-            'name'       => 'required', 
             'maxAmount'  => 'nullable|sometimes|min:0', 
-            'recurrence' => 'required|digits_between:' . implode(',', array_keys(Bill::getRecurrences()))
+            'name'       => 'required', 
+            'recurrence' => 'required|digits_between:' . min($recurrences) . ',' . max($recurrences)
         ];
     }
 

@@ -23,14 +23,6 @@
                                     id="grid-first-name" type="text" value="{{ old('name') }}" name="name">
                                 <p class="text-red-500 text-xs italic">Please fill out this field.</p>
                             </div>
-
-                            <div class="w-full md:w-1/2 px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                    Limite de alerta
-                                </label>
-                                <input class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:border-gray-500" 
-                                    id="grid-last-name" type="number" step="0.01" value="{{ old('maxAmount') }}" name="maxAmount">
-                            </div>
                         </div>
 
                         <div class="flex flex-wrap -mx-3 mb-6">

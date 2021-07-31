@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BillRequest;
 use App\Models\Bill;
-use Illuminate\Http\Request;
 
 class BillController extends Controller
 {

@@ -15,7 +15,6 @@
                         <thead>
                             <tr>
                                 <th class="py-4 px-6">Nome</th>
-                                <th class="py-4 px-6">Valor de alerta</th>
                                 <th class="py-4 px-6">Recorrência</th>
                                 <th class="py-4 px-6">Ações</th>
                             </tr>
@@ -24,8 +23,7 @@
                             @forelse($bills as $bill)
                                 <tr class="hover:bg-grey-200">
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $bill->name }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $bill->maxAmount }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $bill->recurrence() }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $bill->getRecurrenceName() }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light flex">
                                         <a href="{{ route('bills.edit', ['bill' => $bill]) }}" class="bg-white text-white hover:bg-yellow-100 text-gray-800 font-semibold py-2 px-4 mr-2 border border-yellow-200 rounded shadow">
                                             Editar Conta
