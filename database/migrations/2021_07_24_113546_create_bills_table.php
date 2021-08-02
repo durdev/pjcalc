@@ -17,8 +17,9 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('amount')->default(0.0); 
+            $table->decimal('value'); 
             $table->smallInteger('recurrence')->default(Bill::MONTHLY);
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

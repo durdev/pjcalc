@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BillRequest;
 use App\Models\Bill;
+use App\Models\Category;
 
 class BillController extends Controller
 {
@@ -16,6 +17,7 @@ class BillController extends Controller
     public function index()
     {
         $bills = Bill::all();
+
         return view('bill.index', compact('bills'));
     }
 
@@ -26,9 +28,10 @@ class BillController extends Controller
      */
     public function create()
     {
+        $categories  = Category::all();
         $recurrences = Bill::getRecurrences();
 
-        return view('bill.create', compact('recurrences'));
+        return view('bill.create', compact('recurrences', 'categories'));
     }
 
     /**
@@ -63,9 +66,10 @@ class BillController extends Controller
      */
     public function edit(Bill $bill)
     {
+        $categories  = Category::all();
         $recurrences = Bill::getRecurrences();
 
-        return view('bill.edit', compact('bill', 'recurrences'));
+        return view('bill.edit', compact('bill', 'recurrences', 'categories'));
     }
 
     /**

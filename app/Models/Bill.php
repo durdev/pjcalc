@@ -13,7 +13,7 @@ class Bill extends Model
     public CONST WEEKLY  = 2;
     public CONST MANUAL  = 3;
 
-    protected $fillable = ['name', 'amount', 'recurrence'];
+    protected $fillable = ['name', 'value', 'recurrence', 'category_id'];
 
     public static function getRecurrences(): array
     {
@@ -31,6 +31,11 @@ class Bill extends Model
             self::WEEKLY  => $this->getRecurrences()[self::WEEKLY],
             self::MANUAL  => $this->getRecurrences()[self::MANUAL]
         };
+    }
+
+    public function category()
+    {
+        $this->belongsTo(Category::class);
     }
     
 }
