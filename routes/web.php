@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Route::resource('bills', BillController::class);
 Route::resource('categories', CategoryController::class);
+Route::resource('expenses', ExpenseController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
