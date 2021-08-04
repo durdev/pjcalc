@@ -37,5 +37,10 @@ class Bill extends Model
     {
         $this->belongsTo(Category::class);
     }
+
+    public function filterByRecurrence($recurrence)
+    {
+        return $this->where('recurrence', $recurrence)->get();
+    }
     
 }
