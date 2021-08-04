@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Nova conta') }}
+            {{ __('Editar despesa') }}
         </h2>
     </x-slot>
     
@@ -56,7 +56,7 @@
 
                         <div class="flex flex-wrap my-6 justify-between">
                             <a href="{{ route('expenses.index') }}" class="bg-white text-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Voltar</a>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border border-gray-400 rounded shadow">Criar</button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border border-gray-400 rounded shadow">Salvar</button>
                         </div>
                     </form>
                 </div>
