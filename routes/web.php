@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use Illuminate\Support\Facades\Route;
@@ -17,17 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::resource('bills', BillController::class);
 Route::resource('categories', CategoryController::class);
-Route::resource('expenses', ExpenseController::class);
-Route::resource('incomes', IncomeController::class);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::resource('incomes', IncomeController::class);
+Route::group(['as' => 'incomes.', 'prefix' => 'incomes'], function () {
+    Route::put('/{income}/done', [IncomeController::class, 'updateStatus'])->name('done');
+});
+
+Route::resource('expenses', ExpenseController::class);
+Route::group(['as' => 'expenses.', 'prefix' => 'expenses'], function () {
+    Route::put('/{expense}/done', [ExpenseController::class, 'updateStatus'])->name('done');
+});
+
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 require __DIR__.'/auth.php';
