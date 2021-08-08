@@ -17,6 +17,7 @@ class CreateIncomesTable extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('value');
+            $table->boolean('is_done')->default(false);
             $table->timestamps();
         });
     }
