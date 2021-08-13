@@ -4,7 +4,7 @@
             {{ __('Nova despesa') }}
         </h2>
     </x-slot>
-    
+
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
     <div class="py-6">
@@ -19,7 +19,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                     Nome
                                 </label>
-                                <input class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight" 
+                                <input class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight"
                                     id="grid-first-name" type="text" value="{{ old('name') }}" name="name">
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Valor
                             </label>
-                            <input class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:border-gray-500" 
+                            <input class="appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:border-gray-500"
                                 id="grid-last-name" type="number" step="0.01" value="{{ old('value') }}" name="value">
                         </div>
 
@@ -39,10 +39,10 @@
                                 </label>
 
                                 <div class="relative">
-                                    <select class="block appearance-none w-full py-3 px-4 pr-8 border border-gray-200 rounded leading-tight" 
+                                    <select class="block appearance-none w-full py-3 px-4 pr-8 border border-gray-200 rounded leading-tight"
                                         id="grid-state" name="category_id">
                                         @foreach($categories as $category)
-                                            <option @if(old('category_id') == $category->id) selected @endif 
+                                            <option @if(old('category_id') == $category->id) selected @endif
                                                 value="{{ $category->id }}"
                                             >
                                                 {{ $category->name }}

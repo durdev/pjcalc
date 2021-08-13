@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExpenseRequest;
+use App\Http\Requests\ExpenseStatusRequest;
 use App\Models\Category;
 use App\Models\Expense;
 
 class ExpenseController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -86,6 +87,21 @@ class ExpenseController extends Controller
     }
 
     /**
+     * Update the specified status resource in storage.
+     *
+     * @param  \App\Http\Requests\ExpenseRequest  $request
+     * @param  \App\Models\Expense  $expense
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(ExpenseStatusRequest $request, Expense $expense)
+    {
+        $expense->is_done = $request->validated()['status'] ?? false;
+        $expense->save();
+
+        return redirect()->route('dashboard');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Expense  $expense
@@ -97,5 +113,5 @@ class ExpenseController extends Controller
 
         return redirect()->route('expenses.index');
     }
-    
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IncomeStatusRequest;
 use App\Http\Requests\IncomeRequest;
 use App\Models\Income;
 use Illuminate\Http\Request;
@@ -79,6 +80,21 @@ class IncomeController extends Controller
         $income->save();
 
         return redirect()->route('incomes.index');
+    }
+
+    /**
+     * Update the specified status resource in storage.
+     *
+     * @param  \App\Http\Requests\IncomeRequest  $request
+     * @param  \App\Models\Income  $income
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(IncomeStatusRequest $request, Income $income)
+    {
+        $income->is_done = $request->validated()['status'] ?? false;
+        $income->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**
