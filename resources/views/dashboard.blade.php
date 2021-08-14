@@ -1,14 +1,32 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Dashboard de contas') }}
         </h2>
     </x-slot>
 
     <div class="container mx-auto flex mt-6">
         <div class="flex flex-col w-1/2 mx-2">
             <h2 class="text-xl m-3 text-black">Saídas</h2>
+
+            <div class="grid grid-cols-2 p-4 divide-x divide-red-200 rounded-lg bg-red-50 border border-red-500 rounded-lg shadow text-center">
+                <div class="flex flex-col justify-center align-middle">
+                    <p class="text-2xl font-semibold leading-none text-gray-600">
+                        {{ 'R$ '. number_format($expenses->sum('value'), 2, ',', '.') }}
+                    </p>
+                    <p class="text-gray-800">A pagar</p>
+                </div>
+
+                <div class="flex flex-col justify-center align-middle">
+                    <p class="text-2xl font-semibold leading-none text-gray-500">
+                        {{ 'R$ '. number_format($paid_expenses->sum('value'), 2, ',', '.') }}
+                    </p>
+                    <p class="text-gray-800">Pago</p>
+                </div>
+            </div>
+
             @forelse ($expenses as $expense)
+                <hr class="mt-2">
                 <div class="bg-white border border-red-200 rounded-lg shadow mt-2">
                     <form action="{{ route('expenses.done', ['expense' => $expense]) }}" method="POST">
                         @csrf
@@ -29,17 +47,32 @@
                     </form>
                 </div>
             @empty
-                <p>Sem saídas neste mês</p>
+                <hr class="mt-2">
+                <p>Sem saídas pendentes</p>
             @endforelse
-
-            <div class="bg-red-100 border border-red-500 rounded-lg shadow mt-2 p-5">
-                <p>{{ 'R$ '. number_format($expenses->sum('value'), 2, ',', '.') }}</p>
-            </div>
         </div>
 
         <div class="flex flex-col w-1/2 mx-2">
             <h2 class="text-xl m-3 text-black">Entradas</h2>
+
+            <div class="grid grid-cols-2 p-4 divide-x divide-green-200 rounded-lg bg-green-50 border border-green-500 rounded-lg shadow text-center">
+                <div class="flex flex-col justify-center align-middle">
+                    <p class="text-2xl font-semibold leading-none text-gray-600">
+                        {{ 'R$ '. number_format($incomes->sum('value'), 2, ',', '.') }}
+                    </p>
+                    <p class="text-gray-800">A receber</p>
+                </div>
+
+                <div class="flex flex-col justify-center align-middle">
+                    <p class="text-2xl font-semibold leading-none text-gray-500">
+                        {{ 'R$ '. number_format($paid_incomes->sum('value'), 2, ',', '.') }}
+                    </p>
+                    <p class="text-gray-800">Recebido</p>
+                </div>
+            </div>
+
             @forelse ($incomes as $income)
+                <hr class="mt-2">
                 <div class="bg-white border border-green-200 rounded-lg shadow mt-2">
                     <form action="{{ route('incomes.done', ['income' => $income]) }}" method="POST">
                         @csrf
@@ -60,12 +93,9 @@
                     </form>
                 </div>
             @empty
-                <p>Sem saídas neste mês</p>
+                <hr class="mt-2">
+                <p>Sem recebimentos pendentes</p>
             @endforelse
-
-            <div class="bg-green-100 border border-green-500 rounded-lg shadow mt-2 p-5">
-                <p>{{ 'R$ '. number_format($incomes->sum('value'), 2, ',', '.') }}</p>
-            </div>
         </div>
     </div>
 </x-app-layout>
