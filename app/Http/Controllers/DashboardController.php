@@ -18,12 +18,20 @@ class DashboardController extends Controller
 
         $start_of_month = now()->startOfMonth();
 
-        $expenses      = Expense::where('created_at', '>=', $start_of_month->toDateTimeString())->where('is_done', false)->get();
-        $paid_expenses = Expense::where('is_done', true)->get();
-        $paid_incomes  = Income::where('is_done', true)->get();
-        $incomes       = Income::where('created_at', '>=', $start_of_month->toDateTimeString())->where('is_done', false)->get();
+        $unpaid_expenses = Expense::where('created_at', '>=', $start_of_month->toDateTimeString())
+            ->where('is_done', false)
+            ->get();
+        $paid_expenses   = Expense::where('created_at', '>=', $start_of_month->toDateTimeString())
+            ->where('is_done', true)
+            ->get();
+        $paid_incomes    = Income::where('created_at', '>=', $start_of_month->toDateTimeString())
+            ->where('is_done', true)
+            ->get();
+        $unpaid_incomes  = Income::where('created_at', '>=', $start_of_month->toDateTimeString())
+            ->where('is_done', false)
+            ->get();
 
-        return view('dashboard', compact('expenses', 'incomes', 'paid_expenses', 'paid_incomes'));
+        return view('dashboard', compact('unpaid_expenses', 'unpaid_incomes', 'paid_expenses', 'paid_incomes'));
     }
 
 }
