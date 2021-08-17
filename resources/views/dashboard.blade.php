@@ -154,4 +154,56 @@
             @endforelse
         </div>
     </div>
+
+    <h1 class="sm:text-3xl text-2xl text-center font-medium title-font my-3 text-gray-900">
+        Categorias em alerta
+    </h1>
+
+    @forelse ($in_alert_categories as $category)
+        <div class="flex items-center justify-center font-sans container mx-auto my-6">
+            <div class="w-full">
+                <div class="bg-white shadow-md rounded">
+                    <table class="min-w-max w-full table-auto">
+                        <thead>
+                            <tr class="bg-gray-200 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-center">Id</th>
+                                <th class="py-3 px-6 text-center">Nome</th>
+                                <th class="py-3 px-6 text-center">Alerta</th>
+                                <th class="py-3 px-6 text-center">Somatório</th>
+                                <th class="py-3 px-6 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class=" text-sm font-light">
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-center">
+                                    <span class="font-medium">{{ $category->id }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ $category->name }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ $category->alert_value }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ $category->expenses_sum }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <div class="flex item-center justify-center">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a href="{{ route('categories.edit', ['category' => $category->id]) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    @empty
+    @endforelse
 </x-app-layout>
