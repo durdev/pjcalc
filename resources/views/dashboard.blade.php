@@ -205,5 +205,41 @@
             </div>
         </div>
     @empty
+        <div class="flex items-center justify-center font-sans container mx-auto my-6">
+            <div class="w-full">
+                <div class="bg-white shadow-md rounded">
+                    <table class="min-w-max w-full table-auto">
+                        <thead>
+                            <tr class="text-gray-600 bg-gray-200 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-center">Id</th>
+                                <th class="py-3 px-6 text-center">Nome</th>
+                                <th class="py-3 px-6 text-center">Alerta</th>
+                                <th class="py-3 px-6 text-center">Somatório</th>
+                                <th class="py-3 px-6 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-light">
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-center">
+                                    -
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    -
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    -
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    -
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    -
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     @endforelse
 </x-app-layout>
