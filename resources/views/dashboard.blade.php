@@ -165,7 +165,7 @@
                 <div class="bg-white shadow-md rounded">
                     <table class="min-w-max w-full table-auto">
                         <thead>
-                            <tr class="bg-gray-200 uppercase text-sm leading-normal">
+                            <tr class="text-gray-600 bg-gray-200 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-center">Id</th>
                                 <th class="py-3 px-6 text-center">Nome</th>
                                 <th class="py-3 px-6 text-center">Alerta</th>
@@ -173,7 +173,7 @@
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class=" text-sm font-light">
+                        <tbody class="text-sm font-light">
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 text-center">
                                     <span class="font-medium">{{ $category->id }}</span>
